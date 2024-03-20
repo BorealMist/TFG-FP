@@ -1,0 +1,17 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"neurotfg"},
+{"type":"table","name":"funciones_cognitivas","database":"neurotfg","data":
+[
+{"categoria_id":"1","categoria_nombre":"Atención selectiva"},
+{"categoria_id":"2","categoria_nombre":"Atención sostenida"},
+{"categoria_id":"3","categoria_nombre":"atención alternante"},
+{"categoria_id":"4","categoria_nombre":"Atención dividida"}
+]
+}
+,{"type":"table","name":"tests_cogni","database":"neurotfg","data":
+[
+{"test_id":"1","test_nombre":"Test D2","categoria_id":"1","descripcion":"Tarea de cancelación de elementos visuales. Evalúa capacidad de concentración mediante velocidad y precisión.","edad_desde":"6","nivel_educativo":"1","regiones_relac":"","tiempo_requerido":"8","edad_hasta":"80"}
+]
+}
+]

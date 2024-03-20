@@ -1,0 +1,40 @@
+********************En este esquema iré añadiendo los diferentes tests según función cognitiva*********************
+
+DISCLAIMER: En la DB, todo se encuentra dentro de la tabla funciones cognitivas. Podría haber sido más interesante separarlo en
+tres tablas (cognitivo emocional y conductual, ejecutivo dentro de cog o conduc) y puede hacerse aún.
+
+--------------- PRUEBAS COGNITIVAS --------------------
+A. ATENCIÓN:
+Modelo de Sholberg y Mateer: la atención como una pirámide, las funciones
+superiores dependen de otras más simples (selectiva -> sostenida -> alternante -> dividida)
+La velocidad de procesamiento se evalúa en muchos de estos tests, como TMT-A y B.
+Para evaluar vel proc basta con tener en cuenta el tiempo de ejecución y compararlo con baremos.
+    1. ATENCIÓN SELECTIVA.
+        -Cancelación de letras (d2)
+        -TMT-A.
+        -Test auditivo izquierda derecha (buscar info)
+    2. ATENCIÓN SOSTENIDA.
+        Mismos que demás pero a lo largo del tiempo. especialmente
+        test matrices (cancelación de letras)
+    3. ATENCIÓN DIVIDIDA.
+        -PASAT: Paced Auditory Serial Addition Test. Válido en dificultades visión.
+    4. ATENCIÓN ALTERNANTE.
+        -TMT-B.
+B. MEMORIA:
+Corto y largo plazo normalmente se diferencian por el tiempo que pasa
+entre que se muestra el estímulo y se pide que se recuerde.
+    5. MEMORIA CORTO PLAZO.
+        -Listas de palabras.
+        -Dígitos directos (mismo orden).
+        -Recuerdo de historias.
+    6. MEMORIA LARGO PLAZO. 
+        -Figura Rey-Osterreich tras 30 min.
+        -Recuerdo de historias.
+        -Listas de palabras (+ de 15 min).
+    7. MEMORIA DE TRABAJO.
+        -Dígitos inversos. 
+        -Suma de dígitos (buscar test validado).
+
+--------------- PRUEBAS FUNC EMOCIONALES --------------------
+
+---------------- PRUEBAS CONDUCTUALES ----------------------

@@ -1,0 +1,79 @@
+            -------------------------PROYECTO -------------------------------
+
+Funcionalidad de la web: 
+    1. Web orientada a profesionales de la neuropsicología y psicología clínica.
+    2. El usuario solicita un prototipo de evaluación para pacientes basándose en variables como:
+        -Edad del paciente  
+        -Nivel educativo
+        -Puntuación en test de screening
+        -áreas cerebrales con daño (pendiente)
+        -Dificultades sensoriales o de expresión: visión, audición, lenguaje
+        -Tiempo/nº de sesiones disponible 
+    3. La web responde con una vista de una base de datos enumerando los 
+        tests más apropiados en función a esas variables.
+    4. Sería adecuado que el profesional pudiera modificar la query:
+        -Cambiar tests en función a disponibilidad
+        -Que la web ofrezca alternativas o caso default
+    5. Meter un chat si vemos que es todo muy simple pero esto es un poco brainstorming
+
+    ----------------------------Tecnologías a usar----------------------------------
+
+Simpleza: paquete XAMPP, VanillaJS, CSS HTML. No será necesario nada más para una app simple de solicitud de queries.
+
+
+    --------------------DISEÑO de la web (lógica del negocio o así)----------------------------
+
+Estructura de la SQL DB:
+
+Una única base de datos de PRUEBAS DE EVALUACIÓN, con columnas de:
+    1. ID dentro de la base de datos (test_id)
+    2. Función a evaluar (serie de checks: atención, memoria, percepción, gnosias, afasias, etc)
+    3. Tiempo de evaluación.
+    4. Edad para la que está habilitado (dividir en márgenes: niños, adolescentes, adultos, personas mayores)
+    5. Nivel educativo apropiado? Escolaridad baja media o alta (1,2,3) dependiendo de años 
+        -0 a 6: baja (1)
+        -7 a 17: media (2)
+        - >=18: alta (3)
+    6. Prueba auditiva o visual (es decir, si es apta para personas con dificultades de visión o audición)
+    7. Pequeña descripción de la prueba si queremos mostrarla al usuario.
+
+Backend: ni puñetera idea. Hecho con PHP, es cuestión de devolver la query.
+
+Frontend:
+1. Posibilidad de registro de usuarios o todos anónimos, tengo que estudiarlo.
+2. Se le muestra al usuario un simple formulario donde elige las distintas opciones que definen al paciente
+    EVITA inputs que no sean checks. Va a ser un horror el testing si no.
+3. Una vez solicitado y enviado, la página devuelve una tabla con los tests más apropiados para ese paciente. 
+4. Si permitimos modificar, podría aparecer un botón al lado de cada test para cambiarlo por otro acorde a disponibilidad 
+    P.E: si muestra el test D2 para atención, poder cambiarlo por matriz de objetos.
+5. Footer con un buen disclaimer: esta web no sustituye la labor de un profesional, su único objetivo es facilitar
+    la búsqueda de tests apropiados para una evaluación completa, especialmente para los menos experimentados.
+
+        --------------------- PROBLEMAS --------------------------
+
+La eval. neuropsico es muy compleja y cada función cognitiva (atención, memoria, etc) se divide en subcomponentes
+(atención sostenida/selectiva/alternante/divida, memoria corto plazo/largo plazo, etc). Hay que pensar bien a qué nivel desgranamos
+los tests para hacer bien la DB.
+Así escrito la app parece muy simple no sé. Seguro que luego todo son movidas.
+
+LIMITACIONES TEÓRICAS:
+    -No por repetir pero la ev neuro es muy compleja. Entran en juego una gran cantidad de
+    factores que sólo la experiencia y una clara guía basada en datos empíricos pueden ayudar a comprender.
+    Este software no puede sustituir el ojo clínico de un profesional consumado, su única utilidad es
+    ayudar a los profesionales, especialmente más noveles, a encontrar pruebas específicas cognitivas, conductuales y emocionales
+    que permitan una evaluación exhaustiva acorde a unos parámetros concretos. 
+    - Este software generalmente sólo incluye tests específicos, aunque podría incluirse una tabla con 
+    baterías neuropsicológicas completas y que los muestre también.
+    
+
+        ------------------------ Organización y diseño ------------------------------
+
+            -1ª ENTREGA: 8 ABRIL
+            -ENTREGA FINAL PARA CORRECCIONES: 13 DE MAYO
+            -ENTREGA FINAL CORREGIDA: 3 JUNIO
+            TOTAL: 8 semanas de trabajo.
+
+    1ª parte: diseño. Sería lo que más tiempo llevaría pero no hay tiempo así que simple. 1 semana. 
+    2ª parte: esquema de la WEB. Empezar por front (qué ve el usuario) --> Base de Datos (cómo se organiza la info y la recuperamos) --> backend (?)
+
+ https://github.com/fullstack-superdev/simple-php-website/blob/main/includes/functions.php
