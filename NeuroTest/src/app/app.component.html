@@ -1,0 +1,36 @@
+<div class="page-container">
+  <header>
+    <div class="tittle-container">
+      <h1> NEUROTEST 🧠 </h1>
+    </div>
+
+
+    <div class="nav-container">
+      <nav>
+        <button (click)="onClick('/login')">Registro</button>
+        <button (click)="onClick('/singUp')">Identificate</button>
+      </nav>
+
+    </div>
+  </header>
+
+
+</div>
+
+<hr>
+<div class="container">
+
+  <nav>
+    <ul>
+      <li [routerLink]="['/']" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">Inicio</li>
+      <li [routerLink]="['/informacion']" routerLinkActive="activo">Informacion</li>
+      <li [routerLink]="['/test']" routerLinkActive="activo">Test</li>
+
+    </ul>
+  </nav>
+
+</div>
+<div class="position">
+
+  <router-outlet></router-outlet>
+</div>
