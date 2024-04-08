@@ -1,36 +1,53 @@
-<div class="page-container">
-  <header>
-    <div class="tittle-container">
-      <h1> NEUROTEST 🧠 </h1>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="formulario-registro.component.css"> -->
+    <title>Prueba HTML</title>
+</head>
+<body>
+    <header>
+        <header>
+            <div class="tittle-container">
+              <h1> NEUROTEST 🧠 </h1>
+            </div>
+        
+        
+            <div class="nav-container">
+              <nav>
+                <button (click)="onClick('/login')">Registro</button>
+                <button (click)="onClick('/singUp')">Identificate</button>
+              </nav>
+        
+            </div>
+          </header>
+    <div class="container">     
+      <h1>Formulario neuropsicología</h1>
+      <form id="formularioNeuro" action="#" method="POST">
+          <label for="tiempoSesion">Tiempo disponible para la sesión (en minutos):</label>
+          <input type="number" id="tiempoSesion" name="tiempoSesion" required>
 
+          <label for="nivelEducativo">Nivel educativo:</label>
+          <select name="nivelEducativo" id="nivelEducativo" required>
+              <option value="1">Primaria (12 años de educación o menos)</option>
+              <option value="2">Secundaria (entre 12 y 16 años de educación)</option>
+              <option value="3">Superior (más de 16 años de educación)</option>
+          </select><br><br>
 
-    <div class="nav-container">
-      <nav>
-        <button (click)="onClick('/login')">Registro</button>
-        <button (click)="onClick('/singUp')">Identificate</button>
-      </nav>
+          <fieldset>
+              <legend>Regiones encefálicas con evidencia de daño (múltiple selección)</legend>
+              <input type="checkbox" id="cortezaPrefrontal" name="regiones[]" value="Corteza Prefrontal">
+              <label for="cortezaPrefrontal">Corteza Prefrontal</label><br>
 
-    </div>
-  </header>
+              <input type="checkbox" id="cortezaSupraOrbital" name="regiones[]" value="Corteza Supraorbital">
+              <label for="cortezaSupraOrbital">Corteza Supraorbital</label><br>
+         </fieldset><br>
 
-
-</div>
-
-<hr>
-<div class="container">
-
-  <nav>
-    <ul>
-      <li [routerLink]="['/']" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">Inicio</li>
-      <li [routerLink]="['/informacion']" routerLinkActive="activo">Informacion</li>
-      <li [routerLink]="['/test']" routerLinkActive="activo">Test</li>
-
-    </ul>
-  </nav>
-
-</div>
-<div class="position">
-
-  <router-outlet></router-outlet>
-</div>
+          <label for="edadPaciente">Edad del paciente:</label>
+          <input type="number" id="edadPaciente" name="edadPaciente" required><br><br>
+          <input type="submit" value="Enviar">
+      </form> 
+    </div> 
+</body>
+</html>
