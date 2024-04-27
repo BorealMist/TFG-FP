@@ -1,6 +1,8 @@
 <?php
 
+require_once 'conexion.php';
 //Asociamos input de form a variables 
+//CAP 11 del manual PHP: sanear imputs, busca sanitizeString o similar para evitar problemas con imputs
 
 $tiempoSesion = $_POST['tiempoSesion'];
 $nivelEducativo = $_POST['nivelEducativo'];
@@ -27,6 +29,8 @@ foreach ($regiones as $region) {
 $resultado = $conn ->query($sql);
 
 //Devolvemos el ID, nombre y descripción de los tests que aparezcan en la consulta
+//Recuerda que esto lo muestra en consola: hay que modificar este fragmento para mostrar una lista de elementos HTML
+
 if($resultado->num_rows <= 0){
     echo "No se encontraron tests que cumplan con los criterios relacionados.";
 }else{

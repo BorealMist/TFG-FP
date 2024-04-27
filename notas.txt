@@ -77,3 +77,79 @@ LIMITACIONES TEÓRICAS:
     2ª parte: esquema de la WEB. Empezar por front (qué ve el usuario) --> Base de Datos (cómo se organiza la info y la recuperamos) --> backend (?)
 
  https://github.com/fullstack-superdev/simple-php-website/blob/main/includes/functions.php
+
+
+<---------------- Cómo lanzar una app de angular dentro de XAMPP --------------------->
+
+Bibliografía: 
+
+https://angular.io/guide/build#proxying-to-a-backend-server
+https://stackoverflow.com/questions/37172928/how-to-proxy-api-requests-to-another-server/71764796#71764796
+
+Este tutorial es más claro: https://moshiour-dev.medium.com/angular-dev-server-in-custom-domain-using-apache-xampp-7e6b93f43534
+
+    1. Empezar el servidor Apache en xampp.
+
+    2. Configurar un host virtual:
+        Hay que habilitar unos módulos en apache: asumo que descomentando el .conf tal como dice
+            -LoadModule proxy_http_module modules/mod_proxy_http.so
+            -LoadModule rewrite_module modules/mod_rewrite.so
+            -LoadModule deflate_module modules/mod_deflate.so
+            -LoadModule headers_module modules/mod_headers.so
+            -LoadModule proxy_connect_module modules/mod_proxy_connect.so
+            -LoadModule proxy_html_module modules/mod_proxy_html.so
+
+
+// ERROR LOG APACHE: 
+
+[Wed Apr 17 11:02:29.226039 2024] [proxy_html:notice] [pid 13208:tid 460] AH01425: I18n support in mod_proxy_html requires mod_xml2enc. Without it, non-ASCII characters in proxied pages are likely to display incorrectly.
+[Wed Apr 17 11:02:29.240026 2024] [ssl:warn] [pid 13208:tid 460] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Apr 17 11:02:29.305479 2024] [mpm_winnt:notice] [pid 13208:tid 460] AH00354: Child: Starting 150 worker threads.
+
+Probamos a descomentar LoadModule xml2enc_module modules/mod_xml2enc.so a ver si rula
+
+No funciona. Eliminamos paso tres y 4. 
+    3.Añadimos este fragmento de código al final de la lista de módulos (#loadmodule):
+        <Proxy *>
+            Order Allow,Deny
+            Allow from all
+        </Proxy>
+
+    4. Abrimos el archivo httpd-vhost.conf localizado en:
+    C:\Programas\xampp\apache\conf\extra.
+
+    Incluimos al final del archivo el siguiente fragmento:
+
+        ##<VirtualHost *:80*>
+            ProxyPreserveHost On
+            ProxyPass “/” “http://127.0.0.1:4200/"
+            ProxyPassReverse “/” “http:/127.0.0.1:4200/”
+            ServerName custom.mydomain.com
+        ##</VirtualHost>
+        He cambiado servername por custom.neuroteca.com por eso del nombre del
+        trabajo, pero veremos si funciona
+        En teoría puedes añadir tantos hosts virtuales como quieras.
+
+    5. Último paso: añadir el dominio personalizado en los archivos de hosts de windows:
+        ESTE PASO NO ESTÁ HECHO AÚN!!!
+        Hay que encontrar el archivo de host, dentro de la carpeta drivers:
+        C:\Windows\System32\drivers\etc
+        Añades estas líneas al final del archivo, separando nombre de servidor e IP por un espacio:
+
+            127.0.0.1 custom.mydomain.com   
+            [YOUR IP] custom.mydomain.com
+
+            (cambiando mydomain por neuroteca otra vez)
+
+    Una vez todo guardado se reinicia el server y accedes a http://custom.mydomain.com/ (o custom.neuroteca.com)
+    
+<---------------Angular y XAMPP ----------------------->
+Angular es un framework de lado de cliente, así que no puede conectarse directamente con
+una base de datos o un sistema de gestión de éstas. Para poder conectarlo necesitamos usarPHP de intermediario.
+
+
+---Funcionamiento de los PHP -> construir build angular y pruebas
+--- Tests en la base de datos
+--- Modificar front 
+--- Registro usuarios: test solo para registrados
+--- Memoria 
