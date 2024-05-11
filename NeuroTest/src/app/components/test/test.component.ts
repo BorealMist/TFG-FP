@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-test',
@@ -9,9 +11,9 @@ import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 
 export class TestComponent {
 
-  test: FormGroup;
+ test: FormGroup;
   
-  constructor(private FormBuilder: FormBuilder) {
+  constructor(private FormBuilder: FormBuilder, private http: HttpClient) {
     
       this.test = this.FormBuilder.group({
         tiempoSesion: ['', Validators.required, Validators.maxLength(2)],
@@ -20,10 +22,24 @@ export class TestComponent {
         edadPaciente: ['', [Validators.required, Validators.maxLength(2)]],
       });
   }
-
   
- enviar(){
-    console.log(this.test.value)
+  enviar(){
+    console.log("hola");
+    //let body: any = {};
+    //body.tiempoSesion = this.test.value.tiempoSesion;
+    const headers = { 
+      'content-type': 'application/json'};
+
+    const body=JSON.stringify(this.test.value);
+    console.log(body);
+    this.http.post('http://localhost/tfg-fp/manejoDatos.php', body,{'headers':headers})
+      .subscribe((response)=>{
+        console.log(response)
+        //if (response.errors) {return errors} else {mostrar tabla con el array}
+      }); 
   }
   
+  
 }
+
+

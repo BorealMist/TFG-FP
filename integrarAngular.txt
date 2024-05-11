@@ -17,6 +17,8 @@ Set up a MySQL database:
 Create PHP APIs:
     Develop PHP scripts to interact with your MySQL database. These scripts will serve as APIs for your Angular application to fetch and manipulate data.
     Place these PHP scripts in a directory within your XAMPP installation, such as xampp\htdocs\api.
+    Tutorial para la api de php:
+    https://code.tutsplus.com/es/how-to-build-a-simple-rest-api-in-php--cms-37000t
 Integrate Angular with PHP APIs:
     Modify your Angular application to call the PHP APIs for data retrieval and manipulation.
     Update your Angular service or component files to use HTTP requests (HttpClient) to communicate with the PHP APIs.
