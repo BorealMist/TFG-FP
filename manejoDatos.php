@@ -5,6 +5,7 @@ require_once 'conexion.php';
 //CAP 11 del manual PHP: sanear imputs, busca sanitizeString o similar para evitar problemas con imputs
 
 $data = json_decode(file_get_contents('php://input'), true);
+
 $tiempoSesion = $data['tiempoSesion'];
 $nivelEducativo = $data['nivelEducativo'];
 $regiones = $data['regiones'];
@@ -43,10 +44,33 @@ if($resultado->num_rows <= 0){
     /* while($row = $resultado->fetch_assoc()){
         echo "ID: ".$row["test_id"]. " - Nombre: ".$row["test_nombre"]. "- Descripción: ".$row["descripcion"]."<br>";
     } */
-   $prueba = $resultado->fetch_all(MYSQLI_ASSOC);
-   echo json_encode($prueba, JSON_INVALID_UTF8_IGNORE);
+   $resultado = $resultado->fetch_all(MYSQLI_ASSOC);
+   echo json_encode($resultado, JSON_INVALID_UTF8_IGNORE);
    return;
 }
+
+//Código para mostrar json en una tabla html
+//No muestra nada obv, no es un array, es un objeto json
+header('Content-type:text/html;charset=utf-8');
+echo "<table>";
+ echo "<tr>";
+  foreach(array_keys($resultado[0]) as $head){
+     echo "<td>$head</td>";
+     }
+     echo "</tr>";
+
+     foreach($resultado as $row){
+       echo "<tr>";            
+       foreach($row as $col){
+      echo "<td>$col</td>";
+    }
+     echo "</tr>";
+   }
+   echo "</table>";
+
+    return $resultado;
+
+        
 $conn->close();
 var_dump($resultado);
 //echo json_encode($resultado);

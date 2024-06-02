@@ -2,7 +2,7 @@
 <?php
 
     $servername = "localhost";
-    $username = "root"; //hay que cambiarlo a un usuario en phpMyAdmin
+    $username = "root"; 
     $password = "";
     $database = "neurotfg";
 

@@ -153,3 +153,9 @@ una base de datos o un sistema de gestión de éstas. Para poder conectarlo nece
 --- Modificar front 
 --- Registro usuarios: test solo para registrados
 --- Memoria 
+
+Que debería hacer ahora:
+    -Añadir más datos a BD
+    -La variable de tiempo_requerido debería ser un sumatorio.
+        Su función sería encontrar los tests cuyo total de tiempo <= tiempo_requerido
+        Posible sol: añadir variable que sea $suma_tiempo y eso sea lo que contrastes
