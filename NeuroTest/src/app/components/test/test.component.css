@@ -1,0 +1,65 @@
+
+
+.container {
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    margin: 40px;
+    padding: 40px;
+    background: linear-gradient(90deg, rgba(157,90,201,1) 0%, rgba(162,167,237,1) 50%, rgba(157,90,201,1) 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+     justify-content: center;
+     align-items: center;
+    min-height: 80vh;
+     flex-direction: column;
+    padding-top: 5px;
+       
+}
+
+h1 {
+    text-align: center;
+    color: black;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    width: 100px;
+    padding: 10px;
+    background-color: #aad4e5;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
+    font-size: 16px;
+    margin: 0 auto 40px auto;
+    
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 2px solid black;
+    background-color: #e9db6f;
+}
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+ 

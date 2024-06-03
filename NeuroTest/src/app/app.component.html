@@ -5,13 +5,7 @@
     </div>
 
 
-    <div class="nav-container">
-      <nav>
-        <button (click)="onClick('/login')">Registro</button>
-        <button (click)="onClick('/singUp')">Identificate</button>
-      </nav>
 
-    </div>
   </header>
 
 
@@ -25,6 +19,7 @@
       <li [routerLink]="['/']" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">Inicio</li>
       <li [routerLink]="['/informacion']" routerLinkActive="activo">Información</li>
       <li [routerLink]="['/test']" routerLinkActive="activo">Test</li>
+
 
     </ul>
   </nav>

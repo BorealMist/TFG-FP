@@ -1,4 +1,58 @@
+
+
+
+body {
+    background-image: url('NeuroTest\src\assets\img\fondo2.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+
 .container {
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    margin: 40px;
+    padding: 40px;
+    background: linear-gradient(90deg, rgba(157,90,201,1) 0%, rgba(27,41,232,1) 50%, rgba(157,90,201,1) 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #aad4e5;
+}
+
+p {
+    color: beige;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .container {
 
     background-image: url('src/assets/img/fondo2.jpg');
     background-size: cover;
@@ -15,4 +69,4 @@
     backdrop-filter: blur(5px);
     font-size: x-large;
     color: azure;
-}
+} */
