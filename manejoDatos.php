@@ -13,8 +13,6 @@ $edadPaciente = $data['edadPaciente'];
 
 
 //Creamos consulta SQL
-//Modificar tabla para añadir auto_increment en test_id
-//PROBLEMA: la SUMA de tiempo de tests debe ser menor, no individualmente
 //Asignamos un alias a la tabla test_cogni = t, para que sea más legible
 
 $sql = "SELECT t.test_id, t.test_nombre, t.descripcion FROM tests_cogni AS t
@@ -23,9 +21,8 @@ $sql = "SELECT t.test_id, t.test_nombre, t.descripcion FROM tests_cogni AS t
         AND t.edad_desde <= {$edadPaciente}
         AND t.edad_hasta >= {$edadPaciente}";
 
-//concatenarlo o interpolar los valores de variable en la cadena 
 
-//Asignamos la query que aparezca a la variable $result
+//Asignamos la query que aparezca a la variable $resulto
 
 $resultado = $conn ->query($sql);
 
