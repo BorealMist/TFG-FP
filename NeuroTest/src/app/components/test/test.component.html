@@ -14,24 +14,36 @@
     <label for="edadPaciente">Edad del paciente:</label>
     <input type="number" formControlName="edadPaciente" id="edadPaciente" name="edadPaciente" required><br><br>
     <br>
+    <!--Este if comprueba si no se han rellenado los campos y muestra ese párrafo-->
     <button class="btn btn-exito" (click)="enviar()">Enviar</button>
-
+    @if(!isFormValid){
+      <p style="color:red">Rellena todos los campos</p>
+    }
   </form>
 
-  <h2>Pruebas recomendadas:</h2>
+  <!-- Si envías respuesta y tiene información aparece la tabla, si no hay tests aparecerá "no hay tests"-->
+@if (hasSend) {
+
+  @if (!errorMsg) {
+
+    <h2>Pruebas recomendadas:</h2>
 
   <table>
         <tr>
           <th>Nombre</th>
           <th>Descripción</th>
+          <th>Tiempo Requerido</th>
         </tr>
-        <tr>
-          <td>Test D2</td>
-          <td>Symbol-Digit Modalities Test (SDMT)</td>
-        </tr>
-        <tr>
-           <td>Tarea de cancelación de elementos visuales. Evalúa capacidad de concentración mediante velocidad y precisión.</td>
-          <td>El objetivo es sustituir una serie de símbolos en dígitos a partir de una clave dada. La duración permite evaluar la pérdida de rendimiento en el tiempo.</td>
+        <tr *ngFor="let test of tests">
+          <td>{{test.test_nombre}}</td>
+          <td>{{test.descripcion}}</td>
+          <td>{{test.tiempo_requerido}}</td>
         </tr>
   </table>
+
+  }@else {
+
+    {{errorMsg}}
+  }
+} 
 </div>

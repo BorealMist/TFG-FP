@@ -8,22 +8,18 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 $tiempoSesion = $data['tiempoSesion'];
 $nivelEducativo = $data['nivelEducativo'];
-$regiones = $data['regiones'];
 $edadPaciente = $data['edadPaciente'];
 
 
 //Creamos consulta SQL
-//Modificar tabla para añadir auto_increment en test_id
-//PROBLEMA: la SUMA de tiempo de tests debe ser menor, no individualmente
 //Asignamos un alias a la tabla test_cogni = t, para que sea más legible
 
-$sql = "SELECT t.test_id, t.test_nombre, t.descripcion FROM tests_cogni AS t
+$sql = "SELECT t.test_id, t.test_nombre, t.descripcion, t.tiempo_requerido FROM tests_cogni AS t
         INNER JOIN funciones_cognitivas AS f ON t.categoria_id = f.categoria_id
         WHERE t.tiempo_requerido <= {$tiempoSesion} 
         AND t.edad_desde <= {$edadPaciente}
         AND t.edad_hasta >= {$edadPaciente}";
 
-//concatenarlo o interpolar los valores de variable en la cadena 
 
 //Asignamos la query que aparezca a la variable $result
 
@@ -35,31 +31,25 @@ if($resultado->num_rows <= 0){
     echo json_encode(["errors"=>"No se encontraron tests que cumplan con los criterios relacionados."]) ;
     return;
 }else{
-  
+
    $resultado = $resultado->fetch_all(MYSQLI_ASSOC);
-   echo json_encode($resultado, JSON_INVALID_UTF8_IGNORE);
-   return;
-}
-
-//Código para mostrar json en una tabla html
-header('Content-type:text/html;charset=utf-8');
-echo "<table>";
- echo "<tr>";
-  foreach(array_keys($resultado[0]) as $head){
-     echo "<td>$head</td>";
-     }
-     echo "</tr>";
-
-     foreach($resultado as $row){
-       echo "<tr>";            
-       foreach($row as $col){
-      echo "<td>$col</td>";
+   $tiempoTotal = 0;
+   $numeroSesiones = count($resultado);
+   for($i = 0; $i<count($resultado); $i++){
+    $tiempoTotal += $resultado[$i]["tiempo_requerido"];
+    if($tiempoTotal > $tiempoSesion){
+      $numeroSesiones = $i-1;
+      break;
+    }elseif($tiempoTotal == $tiempoSesion){
+      $numeroSesiones = $i;
+      break;
     }
-     echo "</tr>";
    }
-   echo "</table>";
+   $resultado = array_slice($resultado, 0, $numeroSesiones+1);
+   echo json_encode($resultado, JSON_INVALID_UTF8_IGNORE);
+   return $resultado;
 
-    return $resultado;
+}
 
         
 $conn->close();
