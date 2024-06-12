@@ -21,7 +21,7 @@ $sql = "SELECT t.test_id, t.test_nombre, t.descripcion, t.tiempo_requerido FROM 
         AND t.edad_hasta >= {$edadPaciente}";
 
 
-//Asignamos la query que aparezca a la variable $result
+//Asignamos la query que aparezca a la variable $resulto
 
 $resultado = $conn ->query($sql);
 
